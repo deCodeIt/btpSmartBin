@@ -1,0 +1,11 @@
+Place,X,Y,m
+MercuryA,0.07764,0.2465,0.0
+MercuryB,0.1422,0.2465,0.0
+DubeyCanteen,0.09729,0.3577,0.0
+GuestHouse,0.2909,0.3859,0.0
+Cafeteria,0.6305,0.6732,0.0
+AcadGateCricket,0.6305,0.6000,inf
+Generator,0.6857,0.4394,-1.0
+AcadGateFlag,0.8307,0.5901,inf
+MainGate,0.8400,0.2127,inf
+Hospital,0.5416,0.693,0.0
