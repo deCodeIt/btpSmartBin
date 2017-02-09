@@ -29,6 +29,8 @@ while 1
 %     X_freq = [X_freq; freq];
 end
 
-plot(Y,X_mean,'b-','linewidth',2);
+plot(Y,X_mean,'b-','linewidth',0.5);
+xlabel('Height(%)');
+ylabel('signal(-dbm)');
 end
 
