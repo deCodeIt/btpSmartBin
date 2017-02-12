@@ -1,7 +1,8 @@
 %generates Sine wave audio
 
 fs = 44100; % Hz
-t = 0:1/fs:2; % seconds
+duration = 2; % seconds
+t = 0:1/fs:duration; % time interval to generate audio waveform at the given sample rate
 %f = 440; % Hz
 y=[];
 for f = 250:250:10000
