@@ -1,6 +1,6 @@
 clear all;
 close all;
-soundFileDir = './sound_test/500-500-10000Hz/Audacity/';
+soundFileDir = './sound_files/500-500-10000Hz/Audacity/';
 
 for audioFiles = {{'v_empty.wav','v_book.wav','v_water.wav'},{'v_empty_2.wav','v_book_2.wav','v_water_2.wav'},{'v_empty_3.wav','v_book_3.wav','v_water_3.wav'}}
     
