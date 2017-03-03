@@ -14,11 +14,11 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             F = fftshift(abs(fft(y)));
             f = linspace(-Fs/2, Fs/2, numel(y)+1);
             f(end) = []; 
-            subplot(3,1,1);
+            subplot(1,3,1);
             plot(f, F);
             title(strrep(audioFilesEmpty{1},'_','\_'))
             xlim([0,10000])
-            ylim([0,50])
+            % ylim([0,50])
 
 
             audiofile = strcat(soundFileDir,audioFilesBook{1});
@@ -28,11 +28,11 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             F = fftshift(abs(fft(y)));
             f = linspace(-Fs/2, Fs/2, numel(y)+1);
             f(end) = []; 
-            subplot(3,1,2);
+            subplot(1,3,2);
             plot(f, F);
             title(strrep(audioFilesBook{1},'_','\_'))
             xlim([0,10000])
-            ylim([0,50])
+            % ylim([0,50])
 
             audiofile = strcat(soundFileDir,audioFilesWater{1});
             [y,Fs] = audioread(audiofile);
@@ -41,7 +41,7 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             F = fftshift(abs(fft(y)));
             f = linspace(-Fs/2, Fs/2, numel(y)+1);
             f(end) = []; 
-            subplot(3,1,3);
+            subplot(1,3,3);
             plot(f, F);
             title(strrep(audioFilesWater{1},'_','\_'))
             xlim([0,10000])
@@ -61,8 +61,7 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             % % xlim([6000,9000])
             % % ylim([0,50])
             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
-%             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'fig');
-            clf('reset')
+
             figure('name',sprintf('Time_vs_Amplitude_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}))
             hold on
             plot(y_1,'-k','DisplayName',strrep(audioFilesEmpty{1},'_','\_'))
@@ -71,8 +70,7 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             legend('show')
             title(strrep(sprintf('Combined Analysis of Time vs Amplitude for %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'_','\_'));
             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
-%             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'fig');
-            clf('reset')
+
             % figure(6)
             % hold on
             % 
