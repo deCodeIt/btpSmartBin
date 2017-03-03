@@ -49,6 +49,7 @@ for audioFilesEmpty = filesEmpty
             xlabel('KHz');
             
             xlim([0,floor(size(yw,1)/Fs)/duration+1])
+            ylim([0,1])
             
             % save the figure and variables
             save(sprintf('CorrAmp_%s_%s_%s.mat',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'audioC')
