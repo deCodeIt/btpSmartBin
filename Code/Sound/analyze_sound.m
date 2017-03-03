@@ -1,10 +1,16 @@
+%% The analysis of audio recordings for bin being empty or having either water or books
+
 clear all;
 close all;
 soundFileDir = './sound_files/500-500-10000Hz/';
 
-for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
-    for audioFilesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'}
-        for audioFilesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'}
+filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
+filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
+filesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'};
+
+for audioFilesEmpty = filesEmpty
+    for audioFilesBook = filesBook
+        for audioFilesWater = filesWater
     
             figure('name',sprintf('Frequency_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}));
             audiofile = strcat(soundFileDir,audioFilesEmpty{1});
@@ -62,7 +68,8 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             % % ylim([0,50])
             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
 %             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'fig');
-            clf('reset')
+            close;
+            
             figure('name',sprintf('Time_vs_Amplitude_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}))
             hold on
             plot(y_1,'-k','DisplayName',strrep(audioFilesEmpty{1},'_','\_'))
@@ -72,7 +79,8 @@ for audioFilesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}
             title(strrep(sprintf('Combined Analysis of Time vs Amplitude for %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'_','\_'));
             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
 %             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'fig');
-            clf('reset')
+            close;
+            
             % figure(6)
             % hold on
             % 
