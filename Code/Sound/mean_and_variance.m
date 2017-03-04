@@ -12,11 +12,19 @@ filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
 filesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'};
 currentFiles = {filesEmpty,filesBook,filesWater};
 le={'Empty','Book','Water'};
+fileName = 'mean_std_of_empty_book_water';
 
 % filesEmpty = {'e1.wav','e2.wav','e3.wav','e4.wav','e5.wav'};
 % filesWater = {'w1.wav','w2.wav','w3.wav','w4.wav','w5.wav'};
 % currentFiles = {filesEmpty,filesWater};
 % le={'Empty','Water'};
+% fileName = 'mean_std_of_empty_water';
+
+% filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
+% filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
+% currentFiles = {filesEmpty,filesBook};
+% le={'Empty','Book'};
+% fileName = 'mean_std_of_empty_book';
 
 duration = 2;% interval/seconds for each frequency sample
 classes = length(currentFiles); % audio classes like empty,book,water
@@ -78,6 +86,6 @@ legend(hb,le);
 xAxisLegend = {'0.5','1','1.5','2','2.5','3','3.5','4','4.5','5','5.5','6','6.5','7','7.5','8','8.5','9','9.5','10'};
 set(gca,'xtick',1:samples,'xticklabel', xAxisLegend);
 xlabel('KHz');
-fileName = 'mean_std_of_empty_book_water';
+
 save(strcat(fileName,'.fig'),'meanSignal','stdSignal');
-saveas(gcf,strcat(fileName,'.tif'),'tiffn');
+saveas(gcf,strcat(fileName,'.png'),'png');
