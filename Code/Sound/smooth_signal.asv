@@ -1,28 +1,18 @@
-soundFileDir = './sound_files/500-500-10000Hz/';
+function[x,sY] = smooth_signal(y,num_samples)
 
-NumSamples = 5000; % samples in one sliding window
-coeff = ones(1,NumSamples)/NumSamples; %coeff for smoothening
-fDelay = (length(coeff)-1)/2;
+    % for 
+    % num_samples = 1000; % samples in one sliding window
+    coeff = ones(1,num_samples)/num_samples; %coeff for smoothening
+    fDelay = (length(coeff)-1)/2;
 
-audiofile = strcat(soundFileDir,'v_empty.wav');
-[ye,Fs] = audioread(audiofile);
+    x = 1:size(y,1);
+    x = x-fDelay/num_samples;
+    
+    [eH,eL] = envelope(y,num_samples,'rms');
+    sY = filter(coeff,1,eH);
 
-sY = filter(coeff,1,ye);
-
-% plot(1:size(ye,1),ye, ...
-%     1:size(ye,1)-fDelay/NumSamples,sY);
-
-% ye = y(18*Fs:20*Fs);
-x = 1:size(ye,1);
-figure;
-[envHigh, envLow] = envelope(1:size(ye,1),ye,'liner');
-envMean = (envHigh+envLow)/2;
-
-hY = abs(hilbert(ye));
-sY = filter(coeff,1,envHigh);
-
-hold on;
-plot(x,ye,...
-    x-fDelay,sY,...
-    x-fDelay,sY);
-
+    % hold on;
+    % plot(x,ye,'b',...
+    %     x,hY,'g');
+    
+end
