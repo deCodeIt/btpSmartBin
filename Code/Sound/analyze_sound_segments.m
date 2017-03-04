@@ -1,23 +1,23 @@
-%% The analysis of correlation between audio recordings for bin being empty or having either water or books
+%% The analysis of correlation between audio recordings for bin being empty or having either water or papers
 % Assuming the files are of same length (~ 40 secs)
 clear all;
 close all;
 soundFileDir = './sound_files/500-500-10000Hz/';
 
 filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
-filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
+filesPaper = {'v_paper.wav','v_paper_2.wav','v_paper_3.wav'};
 filesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'};
 
 for audioFilesEmpty = filesEmpty
-    for audioFilesBook = filesBook
+    for audioFilesPaper = filesPaper
         for audioFilesWater = filesWater
     
-            figure('name',sprintf('Correlation_Amplitude_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}));
+            figure('name',sprintf('Correlation_Amplitude_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}));
             
             audiofile = strcat(soundFileDir,audioFilesEmpty{1});
             [ye,Fs] = audioread(audiofile);
             
-            audiofile = strcat(soundFileDir,audioFilesBook{1});
+            audiofile = strcat(soundFileDir,audioFilesPaper{1});
             [yb,Fs] = audioread(audiofile);
             
             audiofile = strcat(soundFileDir,audioFilesWater{1});
@@ -41,7 +41,7 @@ for audioFilesEmpty = filesEmpty
             h = bar(audioC);
             grid on
             % legend
-            le={'Empty & Book','Empty & Water','Book & Water'};
+            le={'Empty & Paper','Empty & Water','Paper & Water'};
             legend(h,le);
             
             xAxisLegend = {'0.5','1','1.5','2','2.5','3','3.5','4','4.5','5','5.5','6','6.5','7','7.5','8','8.5','9','9.5','10'};
@@ -52,8 +52,8 @@ for audioFilesEmpty = filesEmpty
             ylim([0,1])
             
             % save the figure and variables
-            save(sprintf('CorrAmp_%s_%s_%s.mat',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'audioC')
-            saveas(gcf,sprintf('Correlation_Amplitude_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
+            save(sprintf('CorrAmp_%s_%s_%s.mat',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'audioC')
+            saveas(gcf,sprintf('Correlation_Amplitude_Analysis_Of_%s_%s_and_%s.png',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'png');
             close; % to close the fugure and save some memory ;)
         end
     end

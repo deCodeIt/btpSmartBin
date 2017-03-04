@@ -1,21 +1,20 @@
-%% The analysis of audio recordings for bin being empty or having either water or books
+%% The analysis of audio recordings for bin being empty or having either water or papers
 
 clear all;
 close all;
 soundFileDir = './sound_files/500-500-10000Hz/';
 
 filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
-filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
+filesPaper = {'v_paper.wav','v_paper_2.wav','v_paper_3.wav'};
 filesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'};
 
 for audioFilesEmpty = filesEmpty
-    for audioFilesBook = filesBook
+    for audioFilesPaper = filesPaper
         for audioFilesWater = filesWater
     
-            figure('name',sprintf('Frequency_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}));
+            figure('name',sprintf('Frequency_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}));
             audiofile = strcat(soundFileDir,audioFilesEmpty{1});
             [y,Fs] = audioread(audiofile);
-            % y = y(1:Fs*2);
             y_1 = y;
             F = fftshift(abs(fft(y)));
             f = linspace(-Fs/2, Fs/2, numel(y)+1);
@@ -27,22 +26,20 @@ for audioFilesEmpty = filesEmpty
             ylim([0,50])
 
 
-            audiofile = strcat(soundFileDir,audioFilesBook{1});
+            audiofile = strcat(soundFileDir,audioFilesPaper{1});
             [y,Fs] = audioread(audiofile);
-            % y = y(1:Fs*2);
             y_2 = y;
             F = fftshift(abs(fft(y)));
             f = linspace(-Fs/2, Fs/2, numel(y)+1);
             f(end) = []; 
             subplot(3,1,2);
             plot(f, F);
-            title(strrep(audioFilesBook{1},'_','\_'))
+            title(strrep(audioFilesPaper{1},'_','\_'))
             xlim([0,10000])
             ylim([0,50])
 
             audiofile = strcat(soundFileDir,audioFilesWater{1});
             [y,Fs] = audioread(audiofile);
-            % y = y(1:Fs*2);
             y_3 = y;
             F = fftshift(abs(fft(y)));
             f = linspace(-Fs/2, Fs/2, numel(y)+1);
@@ -53,48 +50,20 @@ for audioFilesEmpty = filesEmpty
             xlim([0,10000])
             ylim([0,50])
 
-
-            % audiofile = '8000_water.mp3';
-            % [y,Fs] = audioread(audiofile);
-            % %sound(y,Fs);
-            % y_4 = y;
-            % F = fftshift(abs(fft(y)));
-            % f = linspace(-Fs/2, Fs/2, numel(y)+1);
-            % f(end) = []; 
-            % figure(4)
-            % plot(f, F);
-            % title(audiofile)
-            % % xlim([6000,9000])
-            % % ylim([0,50])
-            saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
-%             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'fig');
+            saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'tiffn');
+%             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'fig');
             close;
             
-            figure('name',sprintf('Time_vs_Amplitude_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}))
+            figure('name',sprintf('Time_vs_Amplitude_Analysis_Of %s, %s, and %s',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}))
             hold on
             plot(y_1,'-k','DisplayName',strrep(audioFilesEmpty{1},'_','\_'))
-            plot(y_2,'-r','DisplayName',strrep(audioFilesBook{1},'_','\_'))
+            plot(y_2,'-r','DisplayName',strrep(audioFilesPaper{1},'_','\_'))
             plot(y_3,'-b','DisplayName',strrep(audioFilesWater{1},'_','\_'))
             legend('show')
-            title(strrep(sprintf('Combined Analysis of Time vs Amplitude for %s, %s, and %s',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'_','\_'));
-            saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'tiffn');
-%             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesBook{1},audioFilesWater{1}),'fig');
+            title(strrep(sprintf('Combined Analysis of Time vs Amplitude for %s, %s, and %s',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'_','\_'));
+            saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'tiffn');
+%             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'fig');
             close;
-            
-            % figure(6)
-            % hold on
-            % 
-            % [imn,imx] = minmaxloc(y_1);
-            % plot(y_1(imx))
-            % 
-            % [imn,imx] = minmaxloc(y_2);
-            % plot(y_2(imx))
-            % 
-            % [imn,imx] = minmaxloc(y_3);
-            % plot(y_3(imx))
-            % 
-            % % [imn,imx] = minmaxloc(y_4);
-            % % plot(y_4(imx))
         end
     end
 end

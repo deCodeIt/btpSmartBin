@@ -1,4 +1,4 @@
-%% The analysis of correlation between audio recordings for bin being empty or having either water or books
+%% The analysis of correlation between audio recordings for bin being empty or having either water or papers
 % Assuming the files are of same length (~ 40 secs)
 % for each frequency in 3 classes and their samples, plot the bargraph
 % denoting the mean and variance for the respective classes
@@ -7,12 +7,12 @@ clear all;
 close all;
 soundFileDir = './sound_files/500-500-10000Hz/';
 
-filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
-filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
-filesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'};
-currentFiles = {filesEmpty,filesBook,filesWater};
-le={'Empty','Book','Water'};
-fileName = 'mean_std_of_empty_book_water';
+% filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
+% filesPaper = {'v_paper.wav','v_paper_2.wav','v_paper_3.wav'};
+% filesWater = {'v_water.wav','v_water_2.wav','v_water_3.wav'};
+% currentFiles = {filesEmpty,filesPaper,filesWater};
+% le={'Empty','Paper','Water'};
+% fileName = 'mean_std_of_empty_paper_water';
 
 % filesEmpty = {'e1.wav','e2.wav','e3.wav','e4.wav','e5.wav'};
 % filesWater = {'w1.wav','w2.wav','w3.wav','w4.wav','w5.wav'};
@@ -20,14 +20,14 @@ fileName = 'mean_std_of_empty_book_water';
 % le={'Empty','Water'};
 % fileName = 'mean_std_of_empty_water';
 
-% filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
-% filesBook = {'v_book.wav','v_book_2.wav','v_book_3.wav'};
-% currentFiles = {filesEmpty,filesBook};
-% le={'Empty','Book'};
-% fileName = 'mean_std_of_empty_book';
+filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'};
+filesPaper = {'v_paper.wav','v_paper_2.wav','v_paper_3.wav'};
+currentFiles = {filesEmpty,filesPaper};
+le={'Empty','Paper'};
+fileName = 'mean_std_of_empty_paper';
 
 duration = 2;% interval/seconds for each frequency sample
-classes = length(currentFiles); % audio classes like empty,book,water
+classes = length(currentFiles); % audio classes like empty,paper,water
 
 figure('name','Mean and Variance Analysis');
 
