@@ -7,6 +7,9 @@ soundFileDir = './sound_files/500-500-10000Hz/';
 filesEmpty = {'e1.wav','e2.wav','e3.wav','e4.wav','e5.wav'};
 filesWater = {'w1.wav','w2.wav','w3.wav','w4.wav','w5.wav'};
 
+% filesEmpty = {'v_empty.wav','v_empty_2.wav','v_empty_3.wav'}; %empty
+% filesWater = {'v_paper.wav','v_paper_2.wav','v_paper_3.wav'}; %paper
+
 for audioFilesEmpty = filesEmpty
     for audioFilesWater = filesWater
 
@@ -36,7 +39,7 @@ for audioFilesEmpty = filesEmpty
         xlim([0,10000])
         ylim([0,50])
 
-        saveas(gcf,sprintf('Frequency_Analysis_Of_%s_and_%s.tif',audioFilesEmpty{1},audioFilesWater{1}),'tiffn');
+        saveas(gcf,sprintf('Frequency_Analysis_Of_%s_and_%s.png',audioFilesEmpty{1},audioFilesWater{1}),'png');
         close;
         
         figure('name',sprintf('Time_vs_Amplitude_Analysis_Of %s and %s',audioFilesEmpty{1},audioFilesWater{1}))

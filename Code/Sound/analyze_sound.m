@@ -50,7 +50,7 @@ for audioFilesEmpty = filesEmpty
             xlim([0,10000])
             ylim([0,50])
 
-            saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'tiffn');
+            saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.png',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'png');
 %             saveas(gcf,sprintf('Frequency_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'fig');
             close;
             
@@ -61,7 +61,7 @@ for audioFilesEmpty = filesEmpty
             plot(y_3,'-b','DisplayName',strrep(audioFilesWater{1},'_','\_'))
             legend('show')
             title(strrep(sprintf('Combined Analysis of Time vs Amplitude for %s, %s, and %s',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'_','\_'));
-            saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.tif',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'tiffn');
+            saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.png',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'png');
 %             saveas(gcf,sprintf('Time_vs_Amplitude_Analysis_Of_%s_%s_and_%s.fig',audioFilesEmpty{1},audioFilesPaper{1},audioFilesWater{1}),'fig');
             close;
         end
