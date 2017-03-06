@@ -32,5 +32,6 @@ end
 plot(Y,X_mean,'b-','linewidth',0.5);
 xlabel('Height(%)');
 ylabel('signal(-dbm)');
+ylim([30,70]);
 end
 
