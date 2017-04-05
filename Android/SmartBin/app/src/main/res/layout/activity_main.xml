@@ -84,7 +84,7 @@
         android:id="@+id/record_stop"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="Stop_rec"
+        android:text="Stop Rec"
         tools:layout_editor_absoluteX="218dp"
         tools:layout_editor_absoluteY="52dp"
         android:layout_marginEnd="8dp"
