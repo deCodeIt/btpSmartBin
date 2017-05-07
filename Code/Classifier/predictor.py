@@ -51,7 +51,7 @@ def main():
 			regrEnsemble = pickle.load(fid);
 
 		predictedEnsemble = regrEnsemble.predict(np.reshape(dataTuple,(-1,dataTuple.shape[0])));
-		print("{'status':'true','prediction':'["+str(predictedEnsemble[0][0])+","+str(predictedEnsemble[0][1])+","+str(predictedEnsemble[0][2])+"]'}");
+		print("{'status':'true','prediction':["+str(predictedEnsemble[0][0])+","+str(predictedEnsemble[0][1])+","+str(predictedEnsemble[0][2])+"]}");
 
 	except Exception as e:
 		print("{'status':'false','error':'"+str(e).replace("'","\\'")+"'}");
