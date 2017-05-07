@@ -14,6 +14,7 @@ try:
 	from sklearn.svm import LinearSVC
 	import numpy as np
 	import matplotlib.pyplot as plt
+	import pickle
 
 except Exception as e:
 	print(str(e));
@@ -65,7 +66,12 @@ def main():
 
 	######################################################################
 	regrSound = DecisionTreeRegressor(max_depth=5)
-	predictedSound = cross_val_predict(regrSound,soundData,soundLabel,cv = 5);
+	# predictedSound = cross_val_predict(regrSound,soundData,soundLabel,cv = 5);
+	regrSound.fit(soundData,soundLabel);
+	predictedSound = regrSound.predict(soundData);
+	with open('soundRegressor.pkl','wb') as fid:
+		pickle.dump(regrSound,fid)
+
 	# print(predictedSound)
 
 	# Strue = 0.0;
@@ -80,7 +86,11 @@ def main():
 	###############################
 
 	regrWifi = DecisionTreeRegressor(max_depth=5)
-	predictedWifi = cross_val_predict(regrWifi,wifiData,wifiLabel,cv = 5);
+	# predictedWifi = cross_val_predict(regrWifi,wifiData,wifiLabel,cv = 5);
+	regrWifi.fit(wifiData,wifiLabel);
+	predictedWifi = regrWifi.predict(wifiData);
+	with open('wifiRegressor.pkl','wb') as fid:
+		pickle.dump(regrWifi,fid);
 	# print(predictedWifi)
 
 	# Wtrue = 0.0;
@@ -109,9 +119,11 @@ def main():
 	ensembleY = ensembleData[:, -3:]
 
 	regrEnsemble = DecisionTreeRegressor(max_depth=5)
-	predictedEnsemble = cross_val_predict(regrEnsemble,ensembleX,ensembleY,cv = 5);
-
-	# print(predictedWifi)
+	# predictedEnsemble = cross_val_predict(regrEnsemble,ensembleX,ensembleY,cv = 5);
+	regrEnsemble.fit(ensembleX,ensembleY);
+	predictedEnsemble = regrEnsemble.predict(ensembleX);
+	with open('ensembleRegressor.pkl','wb') as fid:
+		pickle.dump(regrEnsemble,fid)
 
 	Etrue = 0.0;
 	Etotal = len(predictedEnsemble);
@@ -123,7 +135,7 @@ def main():
 	print("%.2f%%"%(100.0*Etrue/(3*Etotal)));
 
 	## Now let's predict the bin configuration
-	
+
 
 	
 	# for train_index, test_index in sss.split(soundData, soundLabel):
