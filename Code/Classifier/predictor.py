@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+
 import sys
 import os
 from glob import glob
 import struct
 import time
 import traceback
-
 try:
 	from sklearn.model_selection import train_test_split
 	from sklearn.model_selection import cross_val_predict
@@ -17,9 +17,9 @@ try:
 	import matplotlib.pyplot as plt
 	import pickle
 	from scipy.signal import hilbert
-
 except Exception as e:
-	traceback.print_exc()
+	print("{'status':false,'message':'"+str(e).replace("'","\\'")+"'}");
+	sys.exit();
 
 def getParamsFromDist(dist):
 	'''returns features from a distribution'''
@@ -204,12 +204,12 @@ def main():
 				regrEnsemble = pickle.load(fid);
 
 			predictedEnsemble = regrEnsemble.predict(np.reshape(dataTuple,(-1,dataTuple.shape[0])));
-			print("{'status':'true','prediction':["+str(predictedEnsemble[0][0])+","+str(predictedEnsemble[0][1])+","+str(predictedEnsemble[0][2])+"]}");
+			print("{\"status\":true,\"message\":["+str(int(round(predictedEnsemble[0][0]/10.0)*10))+","+str(int(round(predictedEnsemble[0][1]/10.0)*10))+","+str(int(round(predictedEnsemble[0][2]/10.0)*10))+"]}");
 		else:
-			print("{'status':'false','error':'Incorrect number of arguments'}");
+			print("{\"status\":false,\"message\":\"Incorrect number of arguments\"}");
 	except Exception as e:
-		print("{'status':'false','error':'"+str(e).replace("'","\\'")+"'}");
-		traceback.print_exc()
+		print("{\"status\":false,\"message\":\""+str(e).replace("'","\\'")+"\"}");
+		# traceback.print_exc()
 
 if __name__ == '__main__':
 	main()
